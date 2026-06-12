@@ -1468,3 +1468,29 @@ section {
 .polaroid-image:hover {
   animation: jazzy-swing 0.35s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards !important;
 }
+
+
+/* Scroll Reveal Animations (Left/Right) */
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-100px);
+  transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(100px);
+  transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
+}
+
+.reveal-active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-left, .reveal-right {
+    transform: none !important;
+    transition: opacity 0.5s ease-in !important;
+  }
+}
