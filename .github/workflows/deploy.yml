@@ -1,0 +1,17 @@
+name: Hourly Deploy
+on:
+  schedule:
+    - cron: "0 * * * *" # Runs every hour at the 0th minute
+  workflow_dispatch: # Allows manual trigger
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Vercel Deploy Hook
+        run: |
+          if [ -z "${{ secrets.VERCEL_DEPLOY_HOOK_URL }}" ]; then
+            echo "VERCEL_DEPLOY_HOOK_URL secret is not set!"
+            exit 1
+          fi
+          curl -X POST ${{ secrets.VERCEL_DEPLOY_HOOK_URL }}
