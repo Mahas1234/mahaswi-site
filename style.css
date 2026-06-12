@@ -1271,7 +1271,7 @@ section {
   object-fit: cover;
   object-position: top center; /* Focuses on the face/top of the image */
   filter: sepia(30%) contrast(1.1) brightness(0.9);
-  transition: all 0.5s ease;
+  transition: all 0.3s ease;
 }
 
 .wall-overlay {
@@ -1416,7 +1416,7 @@ section {
 .loading-marquee {
   display: flex;
   width: max-content;
-  animation: scroll-loading 12s linear infinite;
+  animation: scroll-loading 6s linear infinite;
 }
 
 .loading-marquee span {
@@ -1433,4 +1433,38 @@ section {
 @keyframes scroll-loading {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
+}
+
+
+/* Jazzy Animations */
+@keyframes jazzy-swing {
+  0% { transform: rotate(0deg) scale(1); }
+  20% { transform: rotate(4deg) scale(1.05); }
+  40% { transform: rotate(-3deg) scale(1.05); }
+  60% { transform: rotate(2deg) scale(1.02); }
+  80% { transform: rotate(-1deg) scale(1.04); }
+  100% { transform: rotate(0deg) scale(1.05); }
+}
+
+@keyframes jazzy-pulse {
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(217, 107, 66, 0.4); }
+  70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(217, 107, 66, 0); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(217, 107, 66, 0); }
+}
+
+/* Apply Jazzy Easings */
+.btn-primary, .btn-ghost, .wall-item, .gallery-item, .polaroid-image, .package-standard {
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
+}
+
+.btn-primary:hover, .btn-ghost:hover {
+  animation: jazzy-swing 0.35s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards !important;
+}
+
+.wall-item:hover {
+  animation: jazzy-swing 0.35s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards !important;
+}
+
+.polaroid-image:hover {
+  animation: jazzy-swing 0.35s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards !important;
 }
